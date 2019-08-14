@@ -1,7 +1,6 @@
 package com.vickbook.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,26 +11,21 @@ import com.vickbook.R;
 import java.util.Calendar;
 import java.util.Date;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class MainActivity extends Activity {
 
 
     boolean isCreate = true;
-    @BindView(R.id.rl_header_bar)
     RelativeLayout rlHeaderBar;
-    @BindView(R.id.cpv_calendar)
     CalendarPickerView cpvCalendar;
-    @BindView(R.id.tv_add_events)
     TextView tvAddEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        rlHeaderBar = findViewById(R.id.rl_header_bar);
+        cpvCalendar = findViewById(R.id.cpv_calendar);
+        tvAddEvents = findViewById(R.id.tv_add_events);
     }
 
     @Override
@@ -61,11 +55,5 @@ public class MainActivity extends Activity {
         cpvCalendar.init(lastYear.getTime(), nextYear.getTime())
                 .inMode(CalendarPickerView.SelectionMode.RANGE)
                 .withSelectedDate(today);
-    }
-
-    @OnClick(R.id.tv_add_events)
-    public void onViewClicked() {
-        Intent intent = new Intent(this, AddEventsActivity.class);
-        startActivity(intent);
     }
 }
