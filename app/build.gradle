@@ -10,6 +10,14 @@ android {
         versionName "0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+            storeFile file("/Users/vick/AndroidStudioProjects/VickBook/jenkins")
+            storePassword "ewjkaka-7"
+            keyAlias "jenkins"
+            keyPassword "ewjkaka-7"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
